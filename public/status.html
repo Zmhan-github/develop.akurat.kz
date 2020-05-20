@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    const formData = {'name': 'marat', contact: '89213538051', message: 'Testing message'};
+    const asString = new URLSearchParams(formData).toString()
+    fetch('https://develop.akurat.kz/send-message', {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      body: asString
+    }).then(res => res.json())
+    .then(data => console.log(data))
+    .catch(e => console.log(e));
+  </script>
+</body>
+</html>
