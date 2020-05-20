@@ -1,0 +1,21 @@
+{
+  "name": "develop.akurat.kz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zmhan-github/develop.akurat.kz.git"
+  },
+  "keywords": [],
+  "author": "Marat Zhurmukhamedov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Zmhan-github/develop.akurat.kz/issues"
+  },
+  "homepage": "https://github.com/Zmhan-github/develop.akurat.kz#readme"
+}
