@@ -4,7 +4,7 @@ const path = require('path');
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 module.exports.development = {
-  dialect: 'mysql',
+  dialect: 'mariadb',
   seederStorage: 'sequelize',
   database: process.env.DB_NAME,
   username: process.env.DB_USERNAME,
@@ -14,7 +14,7 @@ module.exports.development = {
 };
 
 module.exports.production = {
-  dialect: 'mysql',
+  dialect: 'mariadb',
   database: process.env.DB_NAME,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASS,
