@@ -3,6 +3,13 @@ const path = require('path');
 const express = require('express');
 const nodeMailer = require('nodemailer');
 const helmet = require('helmet');
+const Sequelize = require('sequelize');
+const dotenv = require('dotenv');
+
+
+dotenv.config({ path: path.resolve(__dirname, './.env') });
+
+
 
 const app = express();
 
@@ -15,6 +22,28 @@ app.use(express.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+
+
+
+const connection = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASS, {
+  host: 'localhost',
+  port: process.env.DB_PORT,
+  dialect: 'mysql',
+  operatorsAliases: false,
+  logging: false
+});
+
+connection.authenticate()
+  .then(() => {
+    console.log("Connecting SERVER DATABASE!")
+  })
+  .catch((err) => {
+    console.log("Error ", err)
+  })
+
+
+// DB_PORT=
+
 
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://akurat.kz");
