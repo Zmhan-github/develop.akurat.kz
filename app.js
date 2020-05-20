@@ -1,15 +1,26 @@
 "use strict";
-
+const path = require('path');
 const express = require('express');
 const nodeMailer = require('nodemailer');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+const helmet = require('helmet');
 
 const app = express();
 
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
+app.use(helmet());
+
+app.use(express.static('public'));
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
+
+
+app.get('/', (req, res) => {
+  res.render('index');
+});
+
 
 app.post('/send-message', (req, res) => {
   let transporter = nodeMailer.createTransport({
@@ -35,19 +46,20 @@ app.post('/send-message', (req, res) => {
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
+      res.json({ data: 'error' });
       return console.log(error);
     }
 
-    res.send({ data: 'success' });
+    res.json({ data: 'success' });
 
   });
 });
 
 app.get('/test', (req, res) => {
-  res.send('Test');
+  res.json({ status: 'OK!' });
 });
 
 
-app.listen(process.env.PORT, function () {
-  console.log('/====SERVER RUNNING =====/ develop.akurat.kz:80');
+app.listen(process.env.PORT || 3000, function () {
+  console.log(`/====SERVER RUNNING =====/ develop.akurat.kz:${process.env.PORT || 3000}`);
 });
