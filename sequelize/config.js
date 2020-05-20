@@ -5,6 +5,9 @@ dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
 module.exports.development = {
   dialect: 'mariadb',
+  dialectOptions: {
+    timezone: 'Etc/GMT+7',
+  },
   seederStorage: 'sequelize',
   database: process.env.DB_NAME,
   username: process.env.DB_USERNAME,
@@ -15,6 +18,9 @@ module.exports.development = {
 
 module.exports.production = {
   dialect: 'mariadb',
+  dialectOptions: {
+    timezone: 'Etc/GMT+7',
+  },
   database: process.env.DB_NAME,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASS,
