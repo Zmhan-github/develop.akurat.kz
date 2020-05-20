@@ -1,8 +1,10 @@
-const http = require('http');
+const express = require('express');
+const app = express();
 
-http.createServer(function(request, response) {
-  response.writeHead(200, {'Content-Type': 'application/json'});
-  response.end(process.env);
-}).listen(process.env.PORT);
+app.get('/', function (req, res) {
+  res.json({ database_user: process.env.DATABASE_USER });
+});
 
-console.log('App is running...');
+app.listen(process.env.PORT, function () {
+  console.log('/====SERVER RUNNING =====/ develop.akurat.kz:80');
+});
