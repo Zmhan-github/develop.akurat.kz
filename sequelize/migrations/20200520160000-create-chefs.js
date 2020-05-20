@@ -32,4 +32,4 @@ module.exports.up = (queryInterface, DataTypes) => {
   })
 };
 
-module.exports.down = (queryInterface) => queryInterface.dropTable("chefs")
+module.exports.down = (queryInterface) => queryInterface.dropTable("chefs");
