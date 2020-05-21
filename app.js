@@ -87,7 +87,7 @@ app.post('/send-message', (req, res) => {
 });
 
 app.get('/test', (req, res) => {
-  res.json({ status: 'OK!' });
+  res.json({ status: 'OK!', msg: 'From webhook' });
 });
 
 
