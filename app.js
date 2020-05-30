@@ -4,28 +4,7 @@ const express = require('express');
 const nodeMailer = require('nodemailer');
 const helmet = require('helmet');
 
-// const Sequelize = require('sequelize');
-// const dotenv = require('dotenv');
-
-
-// dotenv.config({ path: path.resolve(__dirname, './.env') });
-
-// const connection = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, process.env.DB_PASS, {
-//   host: 'localhost',
-//   port: process.env.DB_PORT,
-//   dialect: 'mysql',
-//   operatorsAliases: false,
-//   logging: false
-// });
-
-// connection.authenticate()
-//   .then(() => {
-//     console.log("Connecting SERVER DATABASE!")
-//   })
-//   .catch((err) => {
-//     console.log("Error ", err)
-//   })
-
+const { Chefs } = require('./sequelize/db/models');
 
 
 const app = express();
@@ -87,7 +66,9 @@ app.post('/send-message', (req, res) => {
 });
 
 app.get('/test', (req, res) => {
-  res.json({ status: 'OK!', msg: 'From webhook' });
+  Chefs.findAll().then(chefs => {
+    res.json(chefs)
+  })
 });
 
 
