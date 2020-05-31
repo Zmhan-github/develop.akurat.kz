@@ -6,7 +6,6 @@ const path = require('path');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 
-const port = process.env.PORT || 3000;
 
 app.use(helmet());
 app.use(express.static('public'));
@@ -37,6 +36,6 @@ app.use('/', welcomeRouter);
 app.use('/', testRouter);
 
 
-app.listen(port, () => {
-  console.log(`/====SERVER RUNNING, PORT=${port}====/`);
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`/====SERVER RUNNING, PORT=${process.env.PORT || 3000}====/`);
 });
