@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todo list</title>
+
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/milligram/1.3.0/milligram.css">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body class="container">
+  <h1>Todo List</h1>
+
+  <div>
+    <button onclick="handlers.toggleAll()">Toggle All</button>
+  </div>
+
+  <div style="display: flex;">
+    <input id="addTodoInputText" type="text" style="flex: 1;">
+    <button onclick="handlers.addTodo()">Add</button>
+  </div>
+
+  <div>
+    <input id="changeTodoPositionInput" type="number">
+    <input id="changeTodoTextInput"  type="text">
+    <button onclick="handlers.changeTodo()">Change Todo</button>
+  </div>
+
+  <div style="display: flex;">
+    <button onclick="handlers.deleteTodo()">Delete Todo</button>
+    <input id="deleteTodoPositionInput" type="text" style="flex: 1;">
+  </div>
+
+  <div style="display: flex;">
+    <button onclick="handlers.toggleCompleted()">Toggle Completed</button>
+    <input id="toggleCompletedPositionInput" type="text" style="flex: 1;">
+  </div>
+
+  <ul></ul>
+
+  <script src="./script.js"></script>
+</body>
+</html>
